@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card" style="width: 18rem;">
+  <img src="{{ room.img_url }}" class="card-img-top">
+  <div class="card-body">
+    <h5 class="card-title">Вітаю! Ви забронювали чудовий номер.</h5>
+    <p class="card-text">{{ room }}</p>
+    <a href="{{ url_for('rooms.index') }}" class="btn btn-primary">Перейти на головну сторінку</a>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-inner">
+    {% for room in rooms %}
+      {% if loop.index == 1 %}
+        <div class="carousel-item active">
+      {% else %}
+        <div class="carousel-item">
+      {% endif %}
+          <img src="{{ room.img_url }}" class="d-block w-10" width="500px">
+          <div class="carousel-caption d-none d-md-block">
+              <h5 style="color:rgb(201, 201, 219)">№ {{ room.number }}</h5>
+              <p style="color:blueviolet">{{ room.name }}</p>
+              <a class="btn btn-primary" href="{{ url_for('rooms.reserve', id=room.id) }}">Забронювати</a>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+</div>
+</div>
+</div>
+
+{% endblock content %}

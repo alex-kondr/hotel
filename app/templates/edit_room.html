@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container text-center">
+  <div class="row justify-content-md-center">
+    <div class="col-md-auto">
+
+        <form action="{{ url_for('rooms.edit_room', id=room.id) }}" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Номер кімнати</label>
+                <input type="number" class="form-control" name="number" value="{{ request.form.get('number') or room.number }}">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Назва кімнати</label>
+                <input type="text" class="form-control" name="name" value="{{ request.form.get('name') or room.name }}">
+            </div>
+            <div class="mb-3">
+                <img src="{{ room.img_url }}" width="100px">
+                <label class="form-label">Виберіть фото кімнати для заміни</label>
+                <input type="file" accept="image/*" class="form-control" name="photo">
+            </div>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" name="is_reserved" role="switch" id="flexSwitchCheckChecked" {% if room.is_reserved %} checked {% endif %}>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Зарезервовано</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Змінити</button>
+        </form>
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
